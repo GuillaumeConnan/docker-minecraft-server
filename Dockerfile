@@ -2,7 +2,7 @@ FROM debian:stretch
 
 MAINTAINER Guillaume CONNAN "guillaume.connan44@gmail.com"
 
-LABEL version="0.1.0"               \
+LABEL version="0.1.1"               \
       jre_version="1.8.0_131"       \
       minecraft_version="1.11.2"
 

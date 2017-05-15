@@ -56,8 +56,118 @@ then
     echo "use-native-transport=${MC_USENATIVETRANSPORT:=true}"                     >> $MC_CONFIGFILE
     echo "view-distance=${MC_VIEWDISTANCE:=10}"                                    >> $MC_CONFIGFILE
     echo "white-list=${MC_WHITELIST:=false}"                                       >> $MC_CONFIGFILE
+else
+    if [ -f "$MC_CONFIGFILE" ]
+    then
+        if [ -n "$MC_ALLOWFLIGHT" ]; then
+            sed -i 's/allow-flight=.*/allow-flight='$MC_ALLOWFLIGHT'/' $MC_CONFIGFILE
+        fi
+        if [ -n "$MC_ALLOWNETHER" ]; then
+            sed -i 's/allow-nether=.*/allow-nether='$MC_ALLOWNETHER'/' $MC_CONFIGFILE
+        fi
+        if [ -n "$MC_ANNOUNCEPLAYERACHIEVEMENTS" ]; then
+            sed -i 's/announce-player-achievements=.*/announce-player-achievements='$MC_ANNOUNCEPLAYERACHIEVEMENTS'/' $MC_CONFIGFILE
+        fi
+        if [ -n "$MC_DIFFICULTY" ]; then
+            sed -i 's/difficulty=.*/difficulty='$MC_DIFFICULTY'/' $MC_CONFIGFILE
+        fi
+        if [ -n "$MC_ENABLECOMMANDBLOCK" ]; then
+            sed -i 's/enable-command-block=.*/enable-command-block='$MC_ENABLECOMMANDBLOCK'/' $MC_CONFIGFILE
+        fi
+        if [ -n "$MC_ENABLEQUERY" ]; then
+            sed -i 's/enable-query=.*/enable-query='$MC_ENABLEQUERY'/' $MC_CONFIGFILE
+        fi
+        if [ -n "$MC_ENABLERCON" ]; then
+            sed -i 's/enable-rcon=.*/enable-rcon='$MC_ENABLERCON'/' $MC_CONFIGFILE
+        fi
+        if [ -n "$MC_FORCEGAMEMODE" ]; then
+            sed -i 's/force-gamemode=.*/force-gamemode='$MC_FORCEGAMEMODE'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_GAMEMODE" ]; then
+            sed -i 's/gamemode=.*/gamemode='$MC_GAMEMODE'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_GENERATESTRUCTURES" ]; then
+            sed -i 's/generate-structures=.*/generate-structures='$MC_GENERATESTRUCTURES'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_GENERATORSETTINGS" ]; then
+            sed -i 's/generator-settings=.*/generator-settings='$MC_GENERATORSETTINGS'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_HARDCORE" ]; then
+            sed -i 's/hardcore=.*/hardcore='$MC_HARDCORE'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_LEVELNAME" ]; then
+            sed -i 's/level-name=.*/level-name='$MC_LEVELNAME'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_LEVELSEED" ]; then
+            sed -i 's/level-seed=.*/level-seed='$MC_LEVELSEED'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_LEVELTYPE" ]; then
+            sed -i 's/level-type=.*/level-type='$MC_LEVELTYPE'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_MAXBUILDHEIGHT" ]; then
+            sed -i 's/max-build-height=.*/max-build-height='$MC_MAXBUILDHEIGHT'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_MAXPLAYERS" ]; then
+            sed -i 's/max-players=.*/max-players='$MC_MAXPLAYERS'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_MAXTICKTIME" ]; then
+            sed -i 's/max-tick-time=.*/max-tick-time='$MC_MAXTICKTIME'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_MAXWORLDSIZE" ]; then
+            sed -i 's/max-world-size=.*/max-world-size='$MC_MAXWORLDSIZE'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_MOTD" ]; then
+            sed -i 's/motd=.*/motd='"$MC_MOTD"'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_NETWORKCOMPRESSIONTHRESHOLD" ]; then
+            sed -i 's/network-compression-threshold=.*/network-compression-threshold='$MC_NETWORKCOMPRESSIONTHRESHOLD'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_ONLINEMODE" ]; then
+            sed -i 's/online-mode=.*/online-mode='$MC_ONLINEMODE'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_OPPERMISSIONLEVEL" ]; then
+            sed -i 's/op-permission-level=.*/op-permission-level='$MC_OPPERMISSIONLEVEL'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_PLAYERIDLETIMEOUT" ]; then
+            sed -i 's/player-idle-timeout=.*/player-idle-timeout='$MC_PLAYERIDLETIMEOUT'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_PREVENTPROXYCONNECTIONS" ]; then
+            sed -i 's/prevent-proxy-connections=.*/prevent-proxy-connections='$MC_PREVENTPROXYCONNECTIONS'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_PVP" ]; then
+            sed -i 's/pvp=.*/pvp='$MC_PVP'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_RESOURCEPACKSHA1" ]; then
+            sed -i 's/resource-pack-sha1=.*/resource-pack-sha1='$MC_RESOURCEPACKSHA1'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_RESOURCEPACK" ]; then
+            sed -i 's/resource-pack=.*/resource-pack='$MC_RESOURCEPACK'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_SNOOPERENABLED" ]; then
+            sed -i 's/snooper-enabled=.*/snooper-enabled='$MC_SNOOPERENABLED'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_SPAWNANIMALS" ]; then
+            sed -i 's/spawn-animals=.*/spawn-animals='$MC_SPAWNANIMALS'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_SPAWNMONSTERS" ]; then
+            sed -i 's/spawn-monsters=.*/spawn-monsters='$MC_SPAWNMONSTERS'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_SPAWNNPCS" ]; then
+            sed -i 's/spawn-npcs=.*/spawn-npcs='$MC_SPAWNNPCS'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_USENATIVETRANSPORT" ]; then
+            sed -i 's/use-native-transport=.*/use-native-transport='$MC_USENATIVETRANSPORT'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_VIEWDISTANCE" ]; then
+            sed -i 's/view-distance=.*/view-distance='$MC_VIEWDISTANCE'/' $MC_CONFIGFILE
+        fi
+		if [ -n "$MC_WHITELIST" ]; then
+            sed -i 's/white-list=.*/white-list='$MC_WHITELIST'/' $MC_CONFIGFILE
+        fi
+    fi
 fi
 
+# Accept EULA : https://account.mojang.com/documents/minecraft_eula
 if [ ! -f "$MC_VOLUME/eula.txt" ]
 then
     echo "eula=true" > $MC_VOLUME/eula.txt
