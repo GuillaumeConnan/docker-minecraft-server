@@ -2,7 +2,7 @@ FROM debian:stretch
 
 MAINTAINER Guillaume CONNAN "guillaume.connan44@gmail.com"
 
-LABEL version="0.1.1"               \
+LABEL version="0.2.0"               \
       jre_version="1.8.0_131"       \
       minecraft_version="1.11.2"
 
@@ -21,6 +21,8 @@ RUN (                                                                           
         apt-get -y -q autoclean                                                                                                     && \
         apt-get -y -q autoremove                                                                                                    && \
         apt-get -y -q install sudo                                                                                                     \
+                              screen                                                                                                   \
+                              cron                                                                                                     \
                               wget                                                                                                  && \
         groupadd -g 1000 minecraft                                                                                                  && \
         useradd -u 1000 -s /bin/false -d /minecraft -g minecraft minecraft                                                          && \
