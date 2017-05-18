@@ -53,6 +53,7 @@ then
     echo "spawn-animals=${MC_SPAWNANIMALS:=true}"                                  >> $MC_CONFIGFILE
     echo "spawn-monsters=${MC_SPAWNMONSTERS:=true}"                                >> $MC_CONFIGFILE
     echo "spawn-npcs=${MC_SPAWNNPCS:=true}"                                        >> $MC_CONFIGFILE
+    echo "spawn-protection=${MC_SPAWNPROTECTION:=16}"                              >> $MC_CONFIGFILE
     echo "use-native-transport=${MC_USENATIVETRANSPORT:=true}"                     >> $MC_CONFIGFILE
     echo "view-distance=${MC_VIEWDISTANCE:=10}"                                    >> $MC_CONFIGFILE
     echo "white-list=${MC_WHITELIST:=false}"                                       >> $MC_CONFIGFILE
@@ -154,6 +155,9 @@ else
         fi
         if [ -n "$MC_SPAWNNPCS" ]; then
             sed -i 's/spawn-npcs=.*/spawn-npcs='$MC_SPAWNNPCS'/' $MC_CONFIGFILE
+        fi
+        if [ -n "$MC_SPAWNPROTECTION" ]; then
+            sed -i 's/spawn-protection=.*/spawn-protection='$MC_SPAWNPROTECTION'/' $MC_CONFIGFILE
         fi
         if [ -n "$MC_USENATIVETRANSPORT" ]; then
             sed -i 's/use-native-transport=.*/use-native-transport='$MC_USENATIVETRANSPORT'/' $MC_CONFIGFILE
