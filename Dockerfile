@@ -2,9 +2,9 @@ FROM debian:stretch
 
 MAINTAINER Guillaume CONNAN "guillaume.connan44@gmail.com"
 
-LABEL version="0.2.1"               \
-      jre_version="1.8.0_131"       \
-      minecraft_version="1.11.2"
+LABEL version="0.2.2"             \
+      jre_version="1.8.0_131"     \
+      minecraft_version="1.12"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -40,7 +40,7 @@ RUN (                                                                           
         chown -R root:root /opt/jre                                                                                                 && \
         wget --quiet                                                                                                                   \
              --output-document /opt/minecraft_server.jar                                                                               \
-             "https://s3.amazonaws.com/Minecraft.Download/versions/1.11.2/minecraft_server.1.11.2.jar"                              && \
+             "https://s3.amazonaws.com/Minecraft.Download/versions/1.12/minecraft_server.1.12.jar"                                  && \
         apt-get -y -q purge wget                                                                                                    && \
         apt-get -y -q autoremove                                                                                                    && \
         apt-get clean                                                                                                               && \
