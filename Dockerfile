@@ -2,9 +2,9 @@ FROM debian:stretch
 
 MAINTAINER Guillaume CONNAN "guillaume.connan44@gmail.com"
 
-LABEL version="0.2.2"             \
-      jre_version="1.8.0_131"     \
-      minecraft_version="1.12"
+LABEL version="0.2.3"               \
+      jre_version="1.8.0_144"       \
+      minecraft_version="1.12.1"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -32,15 +32,15 @@ RUN (                                                                           
              --continue                                                                                                                \
              --no-check-certificate                                                                                                    \
              --header "Cookie: oraclelicense=a"                                                                                        \
-             --output-document /opt/jre-8u131-linux-x64.tar.gz                                                                         \
-             "http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jre-8u131-linux-x64.tar.gz"    && \
-        tar xvf /opt/jre-8u131-linux-x64.tar.gz -C /opt/                                                                            && \
+             --output-document /opt/jre-8u144-linux-x64.tar.gz                                                                         \
+             "http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-x64.tar.gz"    && \
+        tar xvf /opt/jre-8u144-linux-x64.tar.gz -C /opt/                                                                            && \
         rm -fr /opt/*.tar.gz                                                                                                        && \
         mv /opt/jre* /opt/jre                                                                                                       && \
         chown -R root:root /opt/jre                                                                                                 && \
         wget --quiet                                                                                                                   \
              --output-document /opt/minecraft_server.jar                                                                               \
-             "https://s3.amazonaws.com/Minecraft.Download/versions/1.12/minecraft_server.1.12.jar"                                  && \
+             "https://s3.amazonaws.com/Minecraft.Download/versions/1.12.1/minecraft_server.1.12.1.jar"                              && \
         apt-get -y -q purge wget                                                                                                    && \
         apt-get -y -q autoremove                                                                                                    && \
         apt-get clean                                                                                                               && \
