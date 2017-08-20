@@ -1,8 +1,8 @@
-FROM debian:stretch
+FROM debian:stretch-slim
 
 MAINTAINER Guillaume CONNAN "guillaume.connan44@gmail.com"
 
-LABEL version="0.2.3"               \
+LABEL version="0.3.0"               \
       jre_version="1.8.0_144"       \
       minecraft_version="1.12.1"
 
@@ -52,11 +52,10 @@ RUN (                                                                           
 ENV PATH            "$PATH:/opt/jre/bin"
 ENV LD_LIBRARY_PATH "$LD_LIBRARY_PATH:/opt/jre/lib/amd64:/opt/jre/lib/amd64/server"
 
-ADD scripts/start.sh /start.sh
+COPY run.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/run.sh
 
-# Expose port and volume
+USER root
 EXPOSE 25565
 VOLUME ["/minecraft"]
-
-# Init
-CMD ["/bin/bash", "/start.sh"]
+CMD ["run.sh"]
