@@ -2,9 +2,9 @@ FROM debian:stretch-slim
 
 MAINTAINER Guillaume CONNAN "guillaume.connan44@gmail.com"
 
-LABEL version="0.3.0"               \
+LABEL version="0.3.1"               \
       jre_version="1.8.0_144"       \
-      minecraft_version="1.12.1"
+      minecraft_version="1.12.2"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -40,7 +40,7 @@ RUN (                                                                           
         chown -R root:root /opt/jre                                                                                                 && \
         wget --quiet                                                                                                                   \
              --output-document /opt/minecraft_server.jar                                                                               \
-             "https://s3.amazonaws.com/Minecraft.Download/versions/1.12.1/minecraft_server.1.12.1.jar"                              && \
+             "https://s3.amazonaws.com/Minecraft.Download/versions/1.12.2/minecraft_server.1.12.2.jar"                              && \
         apt-get -y -q purge wget                                                                                                    && \
         apt-get -y -q autoremove                                                                                                    && \
         apt-get clean                                                                                                               && \
