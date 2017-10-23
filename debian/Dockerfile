@@ -2,9 +2,7 @@ FROM debian:stretch-slim
 
 MAINTAINER Guillaume CONNAN "guillaume.connan44@gmail.com"
 
-LABEL version="0.3.1"               \
-      jre_version="1.8.0_144"       \
-      minecraft_version="1.12.2"
+LABEL version="0.3.2"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -20,33 +18,24 @@ RUN (                                                                           
         apt-get -y -q dist-upgrade                                                                                                  && \
         apt-get -y -q autoclean                                                                                                     && \
         apt-get -y -q autoremove                                                                                                    && \
-        apt-get -y -q install sudo                                                                                                     \
-                              screen                                                                                                   \
-                              cron                                                                                                     \
-                              wget                                                                                                  && \
+        apt-get -y -q install sudo screen cron wget                                                                                 && \
         groupadd -g 1000 minecraft                                                                                                  && \
         useradd -u 1000 -s /bin/false -d /minecraft -g minecraft minecraft                                                          && \
         mkdir /minecraft                                                                                                            && \
         chown -R minecraft:minecraft /minecraft                                                                                     && \
-        wget --quiet                                                                                                                   \
-             --continue                                                                                                                \
-             --no-check-certificate                                                                                                    \
-             --header "Cookie: oraclelicense=a"                                                                                        \
-             --output-document /opt/jre-8u144-linux-x64.tar.gz                                                                         \
-             "http://download.oracle.com/otn-pub/java/jdk/8u144-b01/090f390dda5b47b9b721c7dfaa008135/jre-8u144-linux-x64.tar.gz"    && \
-        tar xvf /opt/jre-8u144-linux-x64.tar.gz -C /opt/                                                                            && \
+        wget --quiet --continue --no-check-certificate --header "Cookie: oraclelicense=a"                                              \
+             --output-document /opt/jre-8u152-linux-x64.tar.gz                                                                         \
+             "http://download.oracle.com/otn-pub/java/jdk/8u152-b16/aa0333dd3019491ca4f6ddbe78cdb6d0/jre-8u152-linux-x64.tar.gz"    && \
+        tar xvf /opt/jre-8u152-linux-x64.tar.gz -C /opt/                                                                            && \
         rm -fr /opt/*.tar.gz                                                                                                        && \
         mv /opt/jre* /opt/jre                                                                                                       && \
         chown -R root:root /opt/jre                                                                                                 && \
-        wget --quiet                                                                                                                   \
-             --output-document /opt/minecraft_server.jar                                                                               \
+        wget --quiet --output-document /opt/minecraft_server.jar                                                                       \
              "https://s3.amazonaws.com/Minecraft.Download/versions/1.12.2/minecraft_server.1.12.2.jar"                              && \
         apt-get -y -q purge wget                                                                                                    && \
         apt-get -y -q autoremove                                                                                                    && \
         apt-get clean                                                                                                               && \
-        rm -fr /tmp/*                                                                                                               && \
-        rm -fr /var/tmp/*                                                                                                           && \
-        rm -fr /var/lib/apt/lists/*                                                                                                    \
+        rm -fr /tmp/* /var/tmp/* /var/lib/apt/lists/*                                                                                  \
     )
 
 ENV PATH            "$PATH:/opt/jre/bin"
