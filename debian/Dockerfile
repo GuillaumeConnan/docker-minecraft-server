@@ -2,7 +2,7 @@ FROM debian:stretch-slim
 
 MAINTAINER Guillaume CONNAN "guillaume.connan44@gmail.com"
 
-LABEL version="0.3.3"
+LABEL version="0.3.4"
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -24,9 +24,9 @@ RUN (                                                                           
         mkdir /minecraft                                                                                                            && \
         chown -R minecraft:minecraft /minecraft                                                                                     && \
         wget --quiet --continue --no-check-certificate --header "Cookie: oraclelicense=a"                                              \
-             --output-document /opt/jre-8u162-linux-x64.tar.gz                                                                         \
-             "http://download.oracle.com/otn-pub/java/jdk/8u162-b12/0da788060d494f5095bf8624735fa2f1/jre-8u162-linux-x64.tar.gz"    && \
-        tar xvf /opt/jre-8u162-linux-x64.tar.gz -C /opt/                                                                            && \
+             --output-document /opt/jre-8u172-linux-x64.tar.gz                                                                         \
+             "http://download.oracle.com/otn-pub/java/jdk/8u172-b11/a58eab1ec242421181065cdc37240b08/jre-8u172-linux-x64.tar.gz"    && \
+        tar xvf /opt/jre-8u172-linux-x64.tar.gz -C /opt/                                                                            && \
         rm -fr /opt/*.tar.gz                                                                                                        && \
         mv /opt/jre* /opt/jre                                                                                                       && \
         chown -R root:root /opt/jre                                                                                                 && \
